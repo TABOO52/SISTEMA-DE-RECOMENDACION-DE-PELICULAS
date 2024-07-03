@@ -22,3 +22,12 @@ def cantidad_filmaciones_mes(mes: str):
         return {"message": f"{cantidad} cantidad de películas fueron estrenadas en el mes de {mes}"}
     else:
         return {"error": "Mes no válido. Por favor ingrese un mes en español válido."}
+
+@app.get('/cantidad_filmaciones_dia/{dia}')
+def cantidad_filmaciones_dia(dia: str):
+    dia = dia.lower()
+    if dia in df_movies['release_day'].unique():
+        cantidad = df_movies[df_movies['release_day'] == dia].shape[0]
+        return{'message': f'{cantidad} cantidad de peliculas fueron estrenadas el dia {dia}'}
+    else:
+        return {'error': 'Dia no valido. Por favor ingrese un dia en español válido.'}
