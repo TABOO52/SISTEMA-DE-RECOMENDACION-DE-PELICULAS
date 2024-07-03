@@ -36,7 +36,9 @@ def cantidad_filmaciones_dia(dia: str):
 def score_titulo(titulo_de_la_filmacion: str):
     titulo_de_la_filmacion = titulo_de_la_filmacion.lower()
     if titulo_de_la_filmacion in df_movies['title'].values:
-        registro = df_movies[df_movies['title'] == titulo_de_la_filmacion]['title'].iloc[0]  
-        return {'message': f'La pelicula {registro} fue la que tu escribiste'}
+        titulo = df_movies[df_movies['title'] == titulo_de_la_filmacion]['title'].iloc[0]  
+        año = df_movies[df_movies['title'] == titulo_de_la_filmacion]['release_year'].iloc[0]  
+        popularidad = df_movies[df_movies['title'] == titulo_de_la_filmacion]['popularity'].iloc[0]  
+        return {'message': f'La pelicula {titulo} fue estrenada en el año {año} con un score/popularidad de {popularidad}'}
     else:
         return {'error': 'Titulo de pelicula no valido. Por favor ingrese un titulo valido'}
