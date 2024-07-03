@@ -42,3 +42,15 @@ def score_titulo(titulo_de_la_filmacion: str):
         return {'message': f'La pelicula {titulo} fue estrenada en el año {año} con un score/popularidad de {popularidad}'}
     else:
         return {'error': 'Titulo de pelicula no valido. Por favor ingrese un titulo valido'}
+
+@app.get('/votos_titulo/{titulo_de_la_filmacion}')
+def votos_titulo(titulo_de_la_filmacion : str):
+    titulo_de_la_filmacion = titulo_de_la_filmacion.lower()
+    if titulo_de_la_filmacion in df_movies['title'].values:
+        titulo = df_movies[df_movies['title'] == titulo_de_la_filmacion]['title'].iloc[0]
+        año = df_movies[df_movies['title'] == titulo_de_la_filmacion]['release_year'].iloc[0] 
+        total = df_movies[df_movies['title'] == titulo_de_la_filmacion]['vote_count'].iloc[0] 
+        promedio = df_movies[df_movies['title'] == titulo_de_la_filmacion]['vote_average'].iloc[0] 
+        return {'message': f'La pelicula {titulo} fue estrenada en el año {año}. La misma cuenta con un total de {total} valoraciones, con un promedio de {promedio}'}
+    else:
+        return {'error': 'Titulo de pelicula no valido. Por favor ingrese un titulo valido'}
