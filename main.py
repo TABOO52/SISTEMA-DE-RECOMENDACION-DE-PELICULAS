@@ -5,7 +5,7 @@ import pandas as pd
 app = FastAPI()
 
 #Cargar el Dataframe desde el archivo CSV 
-df_movies = pd.read_csv('./data/df_movies_limpio.csv')
+df_movies = pd.read_csv('data/df_movies_limpio.csv')
 
 
 # Definir una ruta y una función para manejarla
