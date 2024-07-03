@@ -6,4 +6,4 @@ app = FastAPI()
 # Definir una ruta y una función para manejarla
 @app.get('/')
 def read_root():
-    return {"message": "Hello, World!"}
+    return {"message": "Hello, World Render!"}
