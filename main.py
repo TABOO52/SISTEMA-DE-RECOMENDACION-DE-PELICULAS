@@ -6,6 +6,7 @@ app = FastAPI()
 
 #Cargar el Dataframe desde el archivo CSV 
 df_movies = pd.read_csv('data/df_movies_limpio.csv')
+df_credits_cast = pd.read_csv('data/df_credits_cast.csv')
 
 
 # Definir una ruta y una función para manejarla
@@ -54,3 +55,13 @@ def votos_titulo(titulo_de_la_filmacion : str):
         return {'message': f'La pelicula {titulo} fue estrenada en el año {año}. La misma cuenta con un total de {total} valoraciones, con un promedio de {promedio}'}
     else:
         return {'error': 'Titulo de pelicula no valido. Por favor ingrese un titulo valido'}
+
+@app.get('/exito_actor/{nombre_actor}')
+def get_actor(nombre_actor : str):
+    nombre_actor = nombre_actor.lower()
+
+    df_filtered = df_credits_cast[df_credits_cast['cast_name'].apply(lambda x: nombre_actor in x)]
+    cantidad_titulos = df_filtered.shape[0]
+    if cantidad_titulos == 0:
+        return {'message': f'Actor "{nombre_actor}" no encontrado en el dataset.'}
+    return {'message': f'El actor {nombre_actor} ha participado de {cantidad_titulos} cantidad de filmaciones.'}
