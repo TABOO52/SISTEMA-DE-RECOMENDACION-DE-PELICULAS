@@ -1,9 +1,24 @@
 from fastapi import FastAPI
+import pandas as pd
 
 # Crear una instancia de la aplicación FastAPI
 app = FastAPI()
+
+#Cargar el Dataframe desde el archivo CSV 
+df_movies = pd.read_csv('./data/df_movies_limpio.csv')
+
 
 # Definir una ruta y una función para manejarla
 @app.get('/')
 def read_root():
     return {"message": "Hello, World Render!"}
+
+@app.get('/cantidad_filmaciones_mes/{mes}')
+def cantidad_filmaciones_mes(mes: str):
+    mes = mes.lower()  # Convertir el mes a minúsculas para evitar problemas de mayúsculas/minúsculas
+    if mes in df_movies['release_month'].unique():
+        # Filtrar las películas estrenadas en el mes consultado
+        cantidad = df_movies[df_movies['release_month'] == mes].shape[0]
+        return {"message": f"{cantidad} cantidad de películas fueron estrenadas en el mes de {mes}"}
+    else:
+        return {"error": "Mes no válido. Por favor ingrese un mes en español válido."}
