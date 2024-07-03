@@ -28,6 +28,15 @@ def cantidad_filmaciones_dia(dia: str):
     dia = dia.lower()
     if dia in df_movies['release_day'].unique():
         cantidad = df_movies[df_movies['release_day'] == dia].shape[0]
-        return{'message': f'{cantidad} cantidad de peliculas fueron estrenadas el dia {dia}'}
+        return {'message': f'{cantidad} cantidad de peliculas fueron estrenadas en los dias {dia}'}
     else:
         return {'error': 'Dia no valido. Por favor ingrese un dia en español válido.'}
+    
+@app.get('/popularidad_estreno/{titulo_de_la_filmacion}')
+def score_titulo(titulo_de_la_filmacion: str):
+    titulo_de_la_filmacion = titulo_de_la_filmacion.lower()
+    if titulo_de_la_filmacion in df_movies['title'].values:
+        registro = df_movies[df_movies['title'] == titulo_de_la_filmacion].iloc[0]  
+        return {'message': f'La pelicula {registro['title']} fue estrenada en el año {registro['release_year']} con un score/popularidad de {registro['popularity']}'}
+    else:
+        return {'error': 'Titulo de pelicula no valido. Por favor ingrese un titulo valido'}
