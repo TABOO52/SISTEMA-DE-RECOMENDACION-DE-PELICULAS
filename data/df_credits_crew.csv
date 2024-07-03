@@ -1464,7 +1464,6 @@ id,crew_name_directing
 1811,Gregg Araki
 109614,Kevin Bacon
 60082,Rusty Cundieff
-105045,Margarethe von Trotta
 53023,Agnès Varda
 64802,Joe Mantello
 11239,Masayuki Suo
@@ -9164,7 +9163,6 @@ id,crew_name_directing
 54860,Ryuichi Takamori
 9597,Pitof
 21644,Paul Cox
-5511,Jean-Pierre Melville
 12485,Turi Meyer
 49745,
 62825,Perttu Leppä
@@ -9326,7 +9324,6 @@ id,crew_name_directing
 10943,Brian Gilbert
 125842,Agnieszka Holland
 100973,Colin Nutley
-23305,Asif Kapadia
 21707,Cho Jin-Gyu
 10981,Vincenzo Natali
 10918,Nick Hurran
@@ -12065,7 +12062,6 @@ id,crew_name_directing
 15361,Kern Konwiser
 5353,Richard Shepard
 2252,David Cronenberg
-14788,Steven Soderbergh
 63607,Nana Dzhordzhadze
 13072,Michael Corrente
 30365,Steve Skrovan
@@ -13374,7 +13370,6 @@ id,crew_name_directing
 48350,Don Sharp
 97915,Emile de Antonio
 15003,Prachya Pinkaew
-141971,JP Siili
 24194,Ted Nicolaou
 14851,Rupert Wyatt
 13455,Paul McGuigan
@@ -15073,7 +15068,6 @@ id,crew_name_directing
 68987,Dilip Mehta
 36124,Audrey Ewell
 20781,Paul Etheredge
-22649,Frank Borzage
 31561,Gabriel Pascal
 1912,Hans Weingartner
 35002,Val Guest
@@ -15764,7 +15758,6 @@ id,crew_name_directing
 31549,Adam Mason
 43642,Michael Feifer
 148482,Aki Kaurismäki
-13209,Jafar Panahi
 55063,Damani Baker
 22681,Morgan J. Freeman
 39519,Cornel Wilde
@@ -16763,7 +16756,6 @@ id,crew_name_directing
 48988,Bobby Farrelly
 49494,Kevin Macdonald
 46529,D.J. Caruso
-141971,JP Siili
 49637,Julien Nitzberg
 37714,Danny Lerner
 305656,Frank Pierson
@@ -20841,7 +20833,6 @@ id,crew_name_directing
 174321,Craig Zisk
 179154,D.J. Caruso
 91073,Kim Tae-yong
-77221,Jean-Jacques Annaud
 56584,Robert Amram
 23705,Scott Wiper
 57849,Norman Z. McLeod
@@ -20897,7 +20888,6 @@ id,crew_name_directing
 60540,Kern Saxton
 77439,Mun Chee Yong
 19568,Robert Tinnell
-109962,George Cukor
 191024,Jeff Smith
 27699,Jesús Franco
 101297,Leslie Fenton
@@ -21114,7 +21104,6 @@ id,crew_name_directing
 39544,Shinsuke Sato
 96599,Megan Griffiths
 68556,Everardo Gout
-84198,Kristi Jacobson
 80518,Kazuya Murata
 201485,Robert Taleghany
 103620,Franck Khalfoun
@@ -21163,7 +21152,6 @@ id,crew_name_directing
 117251,Roland Emmerich
 107985,Edgar Wright
 118690,Paul Angunawela
-119916,John Gorrie
 139329,Feng Xiaogang
 93649,
 136418,Steven Knight
@@ -21852,7 +21840,6 @@ id,crew_name_directing
 34023,Joel M. Reed
 81622,Mila Turajlic
 154795,Francine Rzeznik
-152795,Ari Folman
 43115,Bert I. Gordon
 113194,Ashley Miller
 166879,John Burgess
@@ -22149,7 +22136,6 @@ id,crew_name_directing
 180048,Lijo Jose Pellissery
 209282,Martin Provost
 215739,Pirjo Honkasalo
-18440,Jake Kennedy
 136850,Jamie Babbit
 134366,John Poliquin
 75629,Hideaki Anno
@@ -23042,7 +23028,6 @@ id,crew_name_directing
 22592,Fred C. Newmeyer
 31214,Alberto Lattuada
 109891,Jack Conway
-25541,Nicolo Donato
 80992,Otto Jongerius
 248390,Lionel Steketee
 71996,Mark L. Lester
@@ -23532,7 +23517,6 @@ id,crew_name_directing
 104556,Lew Landers
 131366,Paul Leni
 50379,Lamont Johnson
-110428,Bruno Dumont
 41943,Michael Roemer
 100271,Hiroyuki Okiura
 157851,David Cronenberg
@@ -24842,7 +24826,6 @@ id,crew_name_directing
 273922,Chris Tasara
 91316,Curt Hahn
 34650,Harold Clurman
-11115,Gil Cates Jr.
 42734,Henry Koster
 62804,Charles Martin
 22515,Roy Knyrim
@@ -25948,15 +25931,8 @@ id,crew_name_directing
 44522,Gilles Grangier
 31270,Georges Lautner
 33336,Denys de La Patellière
-116723,Simon Aboud
-3057,Kevin Connor
 208763,Oleg Stepchenko
 80145,Dunia Ayaso
-125458,Kevin Connor
-199591,Joseph Ruben
-24023,Anders Nilsson
-24026,Anders Nilsson
-11752,Ute Wieland
 212756,Wiebke von Carolsfeld
 42863,Will Lovelace
 20693,Nicolás López
@@ -25964,17 +25940,10 @@ id,crew_name_directing
 289394,Uli Edel
 107255,Terry Miles
 64926,Per Lindberg
-142563,PES
-157301,Minkyu Lee
-9755,Matthew Hastings
-123634,Aaron C. Peer
-8767,Claude Zidi
 96546,Roberto Rossellini
 120539,Alex Segal
 78358,Vincente Minnelli
 43900,Marcel Pagnol
-43629,Christopher Nolan
-187156,Shane O'Sullivan
 43153,Marcel Pagnol
 84875,Marcel Pagnol
 67756,Marcel Pagnol
@@ -26637,7 +26606,6 @@ id,crew_name_directing
 53950,George Bowers
 21533,Philip Spink
 37610,Frank Tashlin
-69234,Tony Richardson
 62410,Sean McNamara
 24059,Ryan Eslinger
 111043,André De Toth
@@ -28872,7 +28840,6 @@ id,crew_name_directing
 69165,Emmett Alston
 167951,George Bowers
 87122,Stuart Gillard
-168538,Dan Wolman
 5896,John Derek
 31281,John Derek
 23504,Noboru Ishiguro
@@ -29386,7 +29353,6 @@ id,crew_name_directing
 281180,Christian Nyby
 134693,Megan Peterson
 46915,Michael Elliott
-42495,Peter Brook
 91472,Harry Horner
 52212,Tinto Brass
 301229,Cathryn Michon
@@ -30012,7 +29978,6 @@ id,crew_name_directing
 320703,Scott Rodgers
 170277,Val Guest
 25973,Mars Callahan
-132641,Mikio Naruse
 59142,Dick Powell
 47590,Boris Barnet
 165567,Todd Levin
@@ -33754,7 +33719,6 @@ id,crew_name_directing
 20458,Rumle Hammerich
 281780,Yoon Jong-bin
 153795,James Cox
-15028,Jonathan Frakes
 36681,Yoon Jae-goo
 40452,Ryoo Seung-wan
 81460,Lee Hyeon-seung
@@ -33837,7 +33801,6 @@ id,crew_name_directing
 162006,Eiichirō Hasumi
 37502,Min Joon-ki
 45303,Law Wing-cheong
-4912,George Clooney
 127849,Law Chi-Leung
 45407,Park Han-jun
 194523,Johnnie To
@@ -35808,7 +35771,6 @@ id,crew_name_directing
 258384,Anatole Litvak
 259325,Anatole Litvak
 61046,Anatole Litvak
-159849,Frank Capra
 193321,Anatole Litvak
 371759,Douglas Mackinnon
 288463,Gabe Turner
@@ -38881,7 +38843,6 @@ id,crew_name_directing
 235201,Ryan Trecartin
 36090,Shūji Terayama
 268380,Jim Woodring
-99080,Varick Frissell
 56190,
 37228,Steven Fischler
 394244,David Zellner
@@ -40050,7 +40011,6 @@ id,crew_name_directing
 296865,Rodrigo Plá
 394051,Raymond Yip Wai-Man
 379887,Hyeon-jin Park
-298721,Apichatpong Weerasethakul
 382399,Michael Damian
 247414,Nia Dinata
 385962,Kwak Jae-yong
@@ -40286,7 +40246,6 @@ id,crew_name_directing
 265314,José Manuel Cravioto
 253277,Andy Landen
 111312,Chester M. Franklin
-97995,Max Linder
 398137,Jonathan Parker
 89984,Paul Sloane
 44173,Irving Reis
@@ -44830,12 +44789,10 @@ id,crew_name_directing
 411012,John Scheinfeld
 24101,"Arthur Rankin, Jr."
 26539,"Arthur Rankin, Jr."
-10991,Michael Haigney
 22643,Jamie Mitchell
 24794,Mike Southon
 20755,Bill Bannerman
 13683,Victor Cook
-12600,Kunihiko Yuyama
 34065,Kunihiko Yuyama
 308794,Flamarion Ferreira
 461615,Shoujirou Nishimi
@@ -45274,7 +45231,6 @@ id,crew_name_directing
 104702,Georges Méliès
 49295,Georges Méliès
 51507,Radim Špaček
-265189,Ruben Östlund
 373247,Abe Forsythe
 458618,
 277839,Franck Gastambide
