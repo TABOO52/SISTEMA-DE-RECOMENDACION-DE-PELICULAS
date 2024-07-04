@@ -72,7 +72,13 @@ def get_actor(nombre_actor : str):
 def get_director(nombre_director : str):
     nombre_director = nombre_director.lower()
     if nombre_director in df_credits_crew['crew_name_directing'].values:
-        nombre = df_credits_crew[df_credits_crew['crew_name_directing'] == nombre_director]['crew_name_directing'].iloc[0]
-        return {'message': f'Usted escribio el nombre de {nombre}.'}
+        df_filtered = df_credits_crew[df_credits_crew['crew_name_directing'] == nombre_director]
+        nombre = df_credits_crew[df_credits_crew['crew_name_directing'] == nombre_director]['crew_name_directing'].iloc[0]  
+        peliculas_director = {}
+        for index, row in df_filtered.iterrows():
+            peliculas_director[row['title']] = row['release_year']  
+            
+        return {'message': f'El director {nombre} ha participado en las peliculas {peliculas_director}.'}
     else:
         return {'error': 'Nombre del director no valido. Por favor ingrese un nombre valido'}
+    
