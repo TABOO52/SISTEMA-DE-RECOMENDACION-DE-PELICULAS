@@ -7,7 +7,7 @@ app = FastAPI()
 #Cargar el Dataframe desde el archivo CSV 
 df_movies = pd.read_csv('data/df_movies_limpio.csv')
 df_credits_cast = pd.read_csv('data/df_credits_cast.csv')
-
+df_credits_crew = pd.read_csv('data/df_credits_crew.csv')
 
 # Definir una ruta y una función para manejarla
 @app.get('/')
@@ -67,3 +67,12 @@ def get_actor(nombre_actor : str):
     if cantidad_titulos == 0:
         return {'message': f'Actor "{nombre_actor}" no encontrado en el dataset.'}
     return {'message': f'El actor {nombre_actor} ha participado de {cantidad_titulos} cantidad de filmaciones, el mismo ha conseguido un retorno de {total_return} con un promedio de {promedio_return} por filmacion.'}
+
+@app.get('/exito_director/{nombre_director}')
+def get_director(nombre_director : str):
+    nombre_director = nombre_director.lower()
+    if nombre_director in df_credits_crew['crew_name_directing'].values:
+        nombre = df_credits_crew[df_credits_crew['crew_name_directing'] == nombre_director]['crew_name_directing'].iloc[0]
+        return {'message': f'Usted escribio el nombre de {nombre}.'}
+    else:
+        return {'error': 'Nombre del director no valido. Por favor ingrese un nombre valido'}
