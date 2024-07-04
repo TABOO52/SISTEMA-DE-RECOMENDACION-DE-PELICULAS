@@ -1,24 +1,30 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 import pandas as pd
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
-# Crear una instancia de la aplicación FastAPI
 app = FastAPI()
 
-#Cargar el Dataframe desde el archivo CSV 
+templates = Jinja2Templates(directory="templates")
+
 df_movies = pd.read_csv('data/df_movies_limpio.csv')
 df_credits_cast = pd.read_csv('data/df_credits_cast.csv')
 df_credits_crew = pd.read_csv('data/df_credits_crew.csv')
 
-# Definir una ruta y una función para manejarla
-@app.get('/')
-def read_root():
-    return {"message": "Hello, World Render!"}
+@app.get("/", response_class=HTMLResponse)
+async def read_root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get('/cantidad_filmaciones_mes/{mes}')
 def cantidad_filmaciones_mes(mes: str):
-    mes = mes.lower()  # Convertir el mes a minúsculas para evitar problemas de mayúsculas/minúsculas
+    '''Retorna la cantidad de peliculas estrenadas en ese mes.
+    
+    Args:
+        mes (str)
+    '''
+
+    mes = mes.lower()
     if mes in df_movies['release_month'].unique():
-        # Filtrar las películas estrenadas en el mes consultado
         cantidad = df_movies[df_movies['release_month'] == mes].shape[0]
         return {"message": f"{cantidad} cantidad de películas fueron estrenadas en el mes de {mes}"}
     else:
@@ -26,6 +32,12 @@ def cantidad_filmaciones_mes(mes: str):
 
 @app.get('/cantidad_filmaciones_dia/{dia}')
 def cantidad_filmaciones_dia(dia: str):
+    '''Retorna la cantidad de peliculas estrenadas en ese dia.
+
+    Args:
+        dia (str)
+    '''
+    
     dia = dia.lower()
     if dia in df_movies['release_day'].unique():
         cantidad = df_movies[df_movies['release_day'] == dia].shape[0]
@@ -35,6 +47,12 @@ def cantidad_filmaciones_dia(dia: str):
     
 @app.get('/popularidad_estreno/{titulo_de_la_filmacion}')
 def score_titulo(titulo_de_la_filmacion: str):
+    '''Retorna el nombre de la pelicula y su popularidad
+    
+    Args:
+        titulo_de_la_filmacion (str)
+    '''
+    
     titulo_de_la_filmacion = titulo_de_la_filmacion.lower()
     if titulo_de_la_filmacion in df_movies['title'].values:
         titulo = df_movies[df_movies['title'] == titulo_de_la_filmacion]['title'].iloc[0]  
@@ -46,6 +64,12 @@ def score_titulo(titulo_de_la_filmacion: str):
 
 @app.get('/votos_titulo/{titulo_de_la_filmacion}')
 def votos_titulo(titulo_de_la_filmacion : str):
+    '''Retorna el nombre de la pelicula junto a sus valoraciones.
+    
+    Args:
+        titulo_de_la_filmacion
+    '''
+    
     titulo_de_la_filmacion = titulo_de_la_filmacion.lower()
     if titulo_de_la_filmacion in df_movies['title'].values:
         titulo = df_movies[df_movies['title'] == titulo_de_la_filmacion]['title'].iloc[0]
@@ -58,8 +82,13 @@ def votos_titulo(titulo_de_la_filmacion : str):
 
 @app.get('/exito_actor/{nombre_actor}')
 def get_actor(nombre_actor : str):
+    '''Retorna el nombre del actor y varios detalles del exito en sus peliculas
+    
+    Args:
+        nombre_actor (str)
+    '''
+    
     nombre_actor = nombre_actor.lower()
-
     df_filtered = df_credits_cast[df_credits_cast['cast_name'].apply(lambda x: nombre_actor in x)]
     cantidad_titulos = df_filtered.shape[0]
     total_return = df_filtered['return'].sum()
@@ -70,6 +99,12 @@ def get_actor(nombre_actor : str):
 
 @app.get('/exito_director/{nombre_director}')
 def get_director(nombre_director : str):
+    '''Retorna el nombre del director y varios detalles del exito en sus peliculas.
+    
+    Args:
+        nombre_director (str)
+    '''
+    
     nombre_director = nombre_director.lower()
     if nombre_director in df_credits_crew['crew_name_directing'].values:
         df_filtered = df_credits_crew[df_credits_crew['crew_name_directing'] == nombre_director]
