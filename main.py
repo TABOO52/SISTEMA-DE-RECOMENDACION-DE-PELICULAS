@@ -62,6 +62,8 @@ def get_actor(nombre_actor : str):
 
     df_filtered = df_credits_cast[df_credits_cast['cast_name'].apply(lambda x: nombre_actor in x)]
     cantidad_titulos = df_filtered.shape[0]
+    total_return = df_filtered['return'].sum()
+    promedio_return = df_filtered['return'].mean()
     if cantidad_titulos == 0:
         return {'message': f'Actor "{nombre_actor}" no encontrado en el dataset.'}
-    return {'message': f'El actor {nombre_actor} ha participado de {cantidad_titulos} cantidad de filmaciones.'}
+    return {'message': f'El actor {nombre_actor} ha participado de {cantidad_titulos} cantidad de filmaciones, el mismo ha conseguido un retorno de {total_return} con un promedio de {promedio_return} por filmacion.'}
