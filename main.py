@@ -64,7 +64,7 @@ def score_titulo(titulo_de_la_filmacion: str):
 
 @app.get('/votos_titulo/{titulo_de_la_filmacion}')
 def votos_titulo(titulo_de_la_filmacion : str):
-    '''Retorna el nombre de la pelicula junto a sus valoraciones.
+    '''Retorna el nombre de la pelicula junto a sus valoraciones mayores a 2000 votos.
     
     Args:
         titulo_de_la_filmacion
@@ -72,13 +72,18 @@ def votos_titulo(titulo_de_la_filmacion : str):
     
     titulo_de_la_filmacion = titulo_de_la_filmacion.lower()
     if titulo_de_la_filmacion in df_movies['title'].values:
-        titulo = df_movies[df_movies['title'] == titulo_de_la_filmacion]['title'].iloc[0]
-        año = df_movies[df_movies['title'] == titulo_de_la_filmacion]['release_year'].iloc[0] 
-        total = df_movies[df_movies['title'] == titulo_de_la_filmacion]['vote_count'].iloc[0] 
-        promedio = df_movies[df_movies['title'] == titulo_de_la_filmacion]['vote_average'].iloc[0] 
-        return {'message': f'La pelicula {titulo} fue estrenada en el año {año}. La misma cuenta con un total de {total} valoraciones, con un promedio de {promedio}'}
+        movie_row = df_movies[df_movies['title'] == titulo_de_la_filmacion]
+        total_votes = movie_row['vote_count'].iloc[0]
+        
+        if total_votes >= 2000:
+            titulo = movie_row['title'].iloc[0]
+            año = movie_row['release_year'].iloc[0]
+            promedio = movie_row['vote_average'].iloc[0]
+            return {'message': f'La película {titulo} fue estrenada en el año {año}. La misma cuenta con un total de {total_votes} valoraciones, con un promedio de {promedio}'}
+        else:
+            return {'error': 'La película no tiene suficientes valoraciones (menos de 2000).'}
     else:
-        return {'error': 'Titulo de pelicula no valido. Por favor ingrese un titulo valido'}
+        return {'error': 'Título de película no válido. Por favor ingrese un título válido.'}
 
 @app.get('/exito_actor/{nombre_actor}')
 def get_actor(nombre_actor : str):
