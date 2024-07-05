@@ -10,13 +10,13 @@
 7. [Resultados y Conclusiones](#resultados-y-conclusiones)
 8. [Contribución y Colaboración](#contribución-y-colaboración)
 9. [Licencia](#licencia)
-### **INTRODUCCION**
+### **INTRODUCCIÓN**
 ### **INSTALACION Y REQUISITOS**
 ### **ESTRUCTURA DEL PROYECTO**
-### **USO Y EJECUCION**
-### **USO Y EJECUCION**
+### **USO Y EJECUCIÓN**
+### **USO Y EJECUCIÓN**
 ### **DATOS Y FUENTES**
-### **METODOLOGIA**
+### **METODOLOGÍA**
 ### **RESULTADOS Y CONCLUSIONES**
 ### **USO Y EJECUCION**
 ### **CONTRIBUCION Y COLABORACION**
