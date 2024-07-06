@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from sklearn.decomposition import TruncatedSVD
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from functools import lru_cache
+
 
 app = FastAPI()
 
@@ -20,20 +20,6 @@ df_credits_crew = pd.read_csv('data/df_credits_crew.csv')
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
-
-# Vectorización y reducción de dimensionalidad fuera de la función
-title_vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=200)
-title_tfidf_matrix = title_vectorizer.fit_transform(df_movies['title'])
-
-svd_title = TruncatedSVD(n_components=100)
-title_tfidf_reduced = svd_title.fit_transform(title_tfidf_matrix)
-
-company_vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=200)
-company_tfidf_matrix = company_vectorizer.fit_transform(df_movies['company_name'])
-
-svd_company = TruncatedSVD(n_components=100)
-company_tfidf_reduced = svd_company.fit_transform(company_tfidf_matrix)
-
 
 @app.get('/cantidad_filmaciones_mes/{mes}')
 def cantidad_filmaciones_mes(mes: str):
@@ -148,13 +134,26 @@ def get_director(nombre_director : str):
         return {'error': 'Nombre del director no valido. Por favor ingrese un nombre valido'}
     
 
-@lru_cache(maxsize=128)  # Decorador para caché de resultados
+
 @app.get('/Sistema_recomendacion/{titulo}')
 def recomendacion(titulo: str):
     '''Retorna las 5 películas relacionadas con el título.'''
     
     titulo = titulo.lower()
-    
+    # Vectorización y reducción de dimensionalidad fuera de la función
+    title_vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=200)
+    title_tfidf_matrix = title_vectorizer.fit_transform(df_movies['title'])
+
+    svd_title = TruncatedSVD(n_components=100)
+    title_tfidf_reduced = svd_title.fit_transform(title_tfidf_matrix)
+
+    company_vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=200)
+    company_tfidf_matrix = company_vectorizer.fit_transform(df_movies['company_name'])
+
+    svd_company = TruncatedSVD(n_components=100)
+    company_tfidf_reduced = svd_company.fit_transform(company_tfidf_matrix)
+
+
     # Comprobación de existencia de la película
     if titulo in df_movies['title'].str.lower().values:
         pelicula = df_movies[df_movies['title'].str.lower() == titulo]
