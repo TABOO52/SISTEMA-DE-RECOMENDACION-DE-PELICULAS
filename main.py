@@ -144,18 +144,18 @@ def recomendacion(titulo: str):
     titulo = titulo.lower()
     # Vectorización y reducción de dimensionalidad fuera de la función
 
-    df_movies_muestra = df_movies.head(5000)
+    df_movies_muestra = df_movies.head(2500)
 
     vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=1000)
     tfidf_matrix = vectorizer.fit_transform(df_movies_muestra['title'])
 
-    svd = TruncatedSVD(n_components=100)  
+    svd = TruncatedSVD(n_components=20)  
     tfidf_reduced = svd.fit_transform(tfidf_matrix)
 
     company_vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=1000)
     company_tfidf_matrix = company_vectorizer.fit_transform(df_movies_muestra['company_name'])
 
-    svd_company = TruncatedSVD(n_components=100)
+    svd_company = TruncatedSVD(n_components=20)
     company_tfidf_reduced = svd_company.fit_transform(company_tfidf_matrix)
 
 
