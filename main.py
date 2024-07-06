@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 from sklearn.decomposition import TruncatedSVD
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from functools import lru_cache
+
 
 
 app = FastAPI()
@@ -134,7 +136,7 @@ def get_director(nombre_director : str):
         return {'error': 'Nombre del director no valido. Por favor ingrese un nombre valido'}
     
 
-
+@lru_cache(maxsize=128)
 @app.get('/Sistema_recomendacion/{titulo}')
 def recomendacion(titulo: str):
     '''Retorna las 5 películas relacionadas con el título.'''
@@ -157,7 +159,7 @@ def recomendacion(titulo: str):
     company_tfidf_reduced = svd_company.fit_transform(company_tfidf_matrix)
 
 
-
+    
     # Comprobación de existencia de la película
     if titulo in df_movies['title'].str.lower().values:
         pelicula = df_movies[df_movies['title'].str.lower() == titulo]
