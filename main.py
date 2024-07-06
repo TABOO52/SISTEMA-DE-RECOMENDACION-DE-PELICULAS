@@ -141,17 +141,21 @@ def recomendacion(titulo: str):
     
     titulo = titulo.lower()
     # Vectorización y reducción de dimensionalidad fuera de la función
-    title_vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=200)
-    title_tfidf_matrix = title_vectorizer.fit_transform(df_movies['title'])
 
-    svd_title = TruncatedSVD(n_components=100)
-    title_tfidf_reduced = svd_title.fit_transform(title_tfidf_matrix)
+    df_movies_muestra = df_movies.head(5000)
 
-    company_vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=200)
-    company_tfidf_matrix = company_vectorizer.fit_transform(df_movies['company_name'])
+    vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=1000)
+    tfidf_matrix = vectorizer.fit_transform(df_movies_muestra['title'])
+
+    svd = TruncatedSVD(n_components=100)  
+    tfidf_reduced = svd.fit_transform(tfidf_matrix)
+
+    company_vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=1000)
+    company_tfidf_matrix = company_vectorizer.fit_transform(df_movies_muestra['company_name'])
 
     svd_company = TruncatedSVD(n_components=100)
     company_tfidf_reduced = svd_company.fit_transform(company_tfidf_matrix)
+
 
 
     # Comprobación de existencia de la película
@@ -160,7 +164,7 @@ def recomendacion(titulo: str):
 
         if not pelicula.empty:
             pelicula_index = pelicula.index[0]
-            features = np.column_stack([title_tfidf_reduced, company_tfidf_reduced, df_movies['popularity'].values])
+            features = np.column_stack([tfidf_reduced, company_tfidf_reduced, df_movies_muestra['popularity'].values])
             similarity_matrix = cosine_similarity(features)
 
             pelicula_similarities = similarity_matrix[pelicula_index]
