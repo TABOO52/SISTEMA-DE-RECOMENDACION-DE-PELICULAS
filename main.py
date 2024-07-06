@@ -10,7 +10,6 @@ from fastapi.templating import Jinja2Templates
 from functools import lru_cache
 
 
-
 app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
@@ -96,7 +95,7 @@ def votos_titulo(titulo_de_la_filmacion : str):
 @app.get('/exito_actor/{nombre_actor}')
 def get_actor(nombre_actor : str):
     '''Retorna el nombre del actor y varios detalles del exito en sus peliculas
-    
+
     Args:
         nombre_actor (str)
     '''

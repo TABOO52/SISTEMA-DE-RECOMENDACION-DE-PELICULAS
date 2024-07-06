@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API de Proyecto Individual</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -12,13 +13,13 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: #1f1d1d;
             animation: backgroundAnimation 10s infinite alternate;
         }
 
         @keyframes backgroundAnimation {
-            0% { background-color: #f0f0f0; }
-            100% { background-color: #e0e0ff; }
+            0% { background-color: #0f0f0f; }
+            100% { background-color: #eaf851; }
         }
 
         .container {
@@ -44,12 +45,40 @@
             0% { color: #333; }
             100% { color: #555; }
         }
+        .btn {
+            position: relative;
+            padding: 7px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #0f0f0f;
+            letter-spacing: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #555;
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:active {
+            background-color: #333;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>API de Proyecto Individual</h1>
         <p>¡Bienvenido a la API de 6 funciones del proyecto individual!</p>
+        <a href="docs" class="btn btn-5">Comienzo</a>
     </div>
 </body>
 </html>
