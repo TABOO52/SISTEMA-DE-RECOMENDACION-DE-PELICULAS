@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from sklearn.decomposition import TruncatedSVD
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from functools import lru_cache
 
 app = FastAPI()
 
@@ -15,6 +16,20 @@ templates = Jinja2Templates(directory="templates")
 df_movies = pd.read_csv('data/df_movies_limpio.csv')
 df_credits_cast = pd.read_csv('data/df_credits_cast.csv')
 df_credits_crew = pd.read_csv('data/df_credits_crew.csv')
+
+# Vectorización y reducción de dimensionalidad fuera de la función
+title_vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=200)
+title_tfidf_matrix = title_vectorizer.fit_transform(df_movies['title'])
+
+svd_title = TruncatedSVD(n_components=100)
+title_tfidf_reduced = svd_title.fit_transform(title_tfidf_matrix)
+
+company_vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=200)
+company_tfidf_matrix = company_vectorizer.fit_transform(df_movies['company_name'])
+
+svd_company = TruncatedSVD(n_components=100)
+company_tfidf_reduced = svd_company.fit_transform(company_tfidf_matrix)
+
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
@@ -133,55 +148,29 @@ def get_director(nombre_director : str):
         return {'error': 'Nombre del director no valido. Por favor ingrese un nombre valido'}
     
 
+@lru_cache(maxsize=128)  # Decorador para caché de resultados
 @app.get('/Sistema_recomendacion/{titulo}')
 def recomendacion(titulo: str):
-    '''Retorna las 5 películas relacionadas con el título.
+    '''Retorna las 5 películas relacionadas con el título.'''
     
-    Args:
-        titulo (str)
-    '''
-    
-    # Convertir el título a minúsculas
     titulo = titulo.lower()
     
-    # Vectorización y reducción de dimensionalidad para 'title'
-    title_vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=200)
-    title_tfidf_matrix = title_vectorizer.fit_transform(df_movies['title'])
-
-    svd_title = TruncatedSVD(n_components=100)
-    title_tfidf_reduced = svd_title.fit_transform(title_tfidf_matrix)
-
-    # Vectorización y reducción de dimensionalidad para 'company_name'
-    company_vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=200)
-    company_tfidf_matrix = company_vectorizer.fit_transform(df_movies['company_name'])
-
-    svd_company = TruncatedSVD(n_components=100)
-    company_tfidf_reduced = svd_company.fit_transform(company_tfidf_matrix)
-
-    # Combinación de características
-    features = np.column_stack([title_tfidf_reduced, company_tfidf_reduced, df_movies['popularity'].values])
-    similarity_matrix = cosine_similarity(features)
-
     # Comprobación de existencia de la película
-    if titulo in df_movies['title'].unique():
+    if titulo in df_movies['title'].str.lower().values:
         pelicula = df_movies[df_movies['title'].str.lower() == titulo]
 
         if not pelicula.empty:
             pelicula_index = pelicula.index[0]
+            features = np.column_stack([title_tfidf_reduced, company_tfidf_reduced, df_movies['popularity'].values])
+            similarity_matrix = cosine_similarity(features)
+
             pelicula_similarities = similarity_matrix[pelicula_index]
             most_similar_pelicula_indices = np.argsort(-pelicula_similarities)
 
-            # Excluir el índice del producto en sí mismo
             most_similar_products_indices = most_similar_pelicula_indices[most_similar_pelicula_indices != pelicula_index]
 
-            # Obtenemos los nombres de los 5 productos más similares, excluyendo el producto en sí mismo
             top_5_similar_products = df_movies.loc[most_similar_products_indices[:5], 'title'].tolist()
 
-            return {"message": f"Las 5 películas más similares a {titulo} son:{top_5_similar_products}"}
+            return {"message": f"Las 5 películas más similares a {titulo} son: {top_5_similar_products}"}
 
-
-        else:
-            return {"error": "Producto no encontrado"}
-    else:
-        return {"error": "Título no válido. Por favor ingrese una película válida."}
-
+    return {"error": "Película no encontrada"}
