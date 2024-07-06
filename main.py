@@ -17,6 +17,10 @@ df_movies = pd.read_csv('data/df_movies_limpio.csv')
 df_credits_cast = pd.read_csv('data/df_credits_cast.csv')
 df_credits_crew = pd.read_csv('data/df_credits_crew.csv')
 
+@app.get("/", response_class=HTMLResponse)
+async def read_root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
 # Vectorización y reducción de dimensionalidad fuera de la función
 title_vectorizer = TfidfVectorizer(max_df=0.8, min_df=10, max_features=200)
 title_tfidf_matrix = title_vectorizer.fit_transform(df_movies['title'])
@@ -30,10 +34,6 @@ company_tfidf_matrix = company_vectorizer.fit_transform(df_movies['company_name'
 svd_company = TruncatedSVD(n_components=100)
 company_tfidf_reduced = svd_company.fit_transform(company_tfidf_matrix)
 
-
-@app.get("/", response_class=HTMLResponse)
-async def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get('/cantidad_filmaciones_mes/{mes}')
 def cantidad_filmaciones_mes(mes: str):
