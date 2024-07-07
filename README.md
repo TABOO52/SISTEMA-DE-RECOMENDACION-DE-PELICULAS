@@ -17,6 +17,8 @@ La capacidad que las maquinas que tienen para aprender hoy en dia son impresiona
 ![Plataformas](images/plataformas.jpeg)
 
 ### **INSTALACIÓN Y REQUISITOS**
+- Python 3.7 o superior
+- Todas las librerias usadas las encuentras en el archivo "requirements.txt"
 ### **ESTRUCTURA DEL PROYECTO**
 ### **USO Y EJECUCIÓN**
 ### **USO Y EJECUCIÓN**
