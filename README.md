@@ -21,7 +21,6 @@ La capacidad que las maquinas que tienen para aprender hoy en dia son impresiona
 - Todas las librerias usadas las encuentras en el archivo "requirements.txt"
 ### **ESTRUCTURA DEL PROYECTO**
 ![FLOWCHART PROYECTO"](images/flowchart.gif)
-images/flowchart.gif
 ### **USO Y EJECUCIÓN**
 ### **USO Y EJECUCIÓN**
 ### **DATOS Y FUENTES**
