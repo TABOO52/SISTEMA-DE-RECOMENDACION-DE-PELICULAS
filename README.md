@@ -26,8 +26,9 @@ La capacidad que las maquinas que tienen para aprender hoy en dia son impresiona
  2. Encontraras 8 diferentes recuadros identificados con la palabra 'GET' ignoraremos el primero, vamos a trabajar con los 7 siguientes.
  3. Al desplegar cada recuadro encontraremos el boton 'try it out' donde se nos permitirá escribir el dato de entrada.
  4. Al ejecutar la salida deberia verse de la siguiente manera (caso de ejemplo):
-     
-### **USO Y EJECUCIÓN**
+    ![Response body](images/responsebody.png)
+    
+ Para una explicación mas a detalle visitar el siguiente link.
 ### **DATOS Y FUENTES**
 ### **METODOLOGÍA**
 ### **RESULTADOS Y CONCLUSIONES**
