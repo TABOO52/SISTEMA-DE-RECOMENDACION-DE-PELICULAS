@@ -32,7 +32,6 @@ La capacidad que las maquinas que tienen para aprender hoy en dia son impresiona
 ### **DATOS Y FUENTES**
 ### **METODOLOGÍA**
 ### **RESULTADOS Y CONCLUSIONES**
-### **USO Y EJECUCION**
 ### **CONTRIBUCIÓN Y COLABORACION**
 ### **AUTORES**
 
