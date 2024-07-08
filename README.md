@@ -22,6 +22,11 @@ La capacidad que las maquinas que tienen para aprender hoy en dia son impresiona
 ### **ESTRUCTURA DEL PROYECTO**
 ![FLOWCHART PROYECTO"](images/flowchart.gif)
 ### **USO Y EJECUCIÓN**
+ 1. Abrir link https://movies-and-credits.onrender.com y presionar boton de 'Comienzo' (Si la pagina no carga intentar de nuevo en 5 min)
+ 2. Encontraras 8 diferentes recuadros identificados con la palabra 'GET' ignoraremos el primero, vamos a trabajar con los 7 siguientes.
+ 3. Al desplegar cada recuadro encontraremos el boton 'try it out' donde se nos permitirá escribir el dato de entrada.
+ 4. Al ejecutar la salida deberia verse de la siguiente manera (caso de ejemplo):
+     
 ### **USO Y EJECUCIÓN**
 ### **DATOS Y FUENTES**
 ### **METODOLOGÍA**
