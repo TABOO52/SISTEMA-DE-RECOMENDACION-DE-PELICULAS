@@ -27,34 +27,20 @@ La capacidad que las maquinas que tienen para aprender hoy en dia son impresiona
  3. Al desplegar cada recuadro encontraremos el boton 'try it out' donde se nos permitirá escribir el dato de entrada.
  4. Al ejecutar la salida deberia verse de la siguiente manera (caso de ejemplo):
     ![Response body](images/responsebody.png)
-    
- Para una explicación mas a detalle visitar el siguiente link.
 ### **DATOS Y FUENTES**
 - [FastAPI-Render](https://github.com/orestes-victor/Repositorio_guia_para_fastAPI_y_RENDER)
 - (S/f). Unirioja.es. Recuperado el 8 de julio de 2024, de [https://dialnet.unirioja.es/servlet/articulo?codigo=7242764](https://dialnet.unirioja.es/servlet/articulo?codigo=7242764)
 - [Exploratory Data Analysis with Pandas Python](https://www.youtube.com/watch?v=xi0vhXFPegw)
 ### **METODOLOGÍA**
-Para dar comienzo a nuestro proyecto nos vamos a basar en las principales fases que componen el mismo, tomando asi como eje de guia la estructura del prroyecto.
-
-1. #### **Ingesta de datos**
-   A la hora de trabajar con la ingesta de datos deberemos analizar el tipo de archivo que estaremos analizando, su fuente de ingreso y su contexto, adicional a ello deberemos analizar el tipo de codificacion en el que se enccuentra el mismo. Para esta ingesta de datos usaremos pandas.
-2. #### **EDA**
-   - **Chequeo de nulos:** En esa seccion definimos todos los valores nulos que no aportan mayor informacion o los que podemos reemplazar otro valor.
-   - **Valores duplicados:** En esta seccion identificamos los valores duplicados, analizamos sus causas y se evalua la decision de dejarlos o no.
-   - **Valores faltantes:** En esta seccion revisamos valores que tienen algun problema de tipado o en su celda está identificado como Nan, para posteriormente analizar de que manera completar estos valores o eliminarlos del dataset
-   - **Tipos de datos:** Se chequea de manera especifica cada columna del dataset en busca de alguna discrepancia que nos indique el cambio de tipo de datos que este maneja por defecto.
-   - **Analisis outlier:** En este seccion revisamos normalmente de las columnas numericas de gran relevancia los valores que estan fuera de lo común, revisando la decision de eliminar o mantener dichos datos y el como puede afectar el dataset.
-   - **Analisis estadistico de datos** En esta seccion finalmente logramos ver mediante unas columnas de datos especificas como se han comportado los datos, ya sea a lo largo de los años, su tendencia y popularidad de los mismos.
-   - **Analisis de correlaciones bi y multivariado:** En esta seccion vamos a revisar aquellas columnas con algun tipo de relacion, y encontrar a lo largo de las filas que valores pueden tener mayor incidencia a estar repetidos o relacionados.
-3. #### **ETL**
-4. #### **API**
-5. #### **Machine Learning**
-6. #### **Modelo Final**
-
-
+Podrás revisar un poco de lo llevado a cabo en el siguiente video https://youtu.be/kiX8tswhhYc
 ### **RESULTADOS Y CONCLUSIONES**
+- Luego de realizar el EDA observamos algunos valores nulos en la columna return que podria indicarnos al parecer que deberian ser eliminados, sin embarago estos valores resultan de importancia ya que si bien tiene valores nulos, su contenido puede tener valores de interes para nuestro modelo de ML como datos acerca de la compañia de las peliculas o su popularidad.
+- Los valores outliers no tienen porque ser descartados del todo. Se comprobó que los valores fuera de lo comun que estaban por encima de la media resultaban ser de utilidad para el aprendizaje del modelo de recomendacion.
+- El nivel de peliculas realizadas aumento con el tiempo. Esto nos hace plantear dos posibles hipotesis del origen de los datos: 1. El estudio centró sus esfuerzos en encontrar datos de peliculas modernas y relevantes. 2. El estudio no tuvo prejuicios de evaluacion lo que revelaria el posible aumento de la producción de peliculas a causa de la creciente modernizacion tecnologica que este sector ha tenido.
 ### **CONTRIBUCIÓN Y COLABORACION**
+¡Gracias por considerar contribuir a este proyecto! Valoramos y damos la bienvenida a las contribuciones de la comunidad. Si tienes ideas para mejorar la estructura del proyecto o cualquier otra sugerencia, no dudes en proponer cambios.
 ### **AUTORES**
+Gustavo Pardo Bermudez / Estudiante- SoyHenry
 
 
 
